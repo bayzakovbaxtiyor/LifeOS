@@ -1,0 +1,27 @@
+**Tizim:** LifeOS (BAXZAKOV-OS-2026-2027)  
+**Foydalanuvchi:** Baxtiyor | **Bosh maqsad:** AI Agent | **Progress:** 12/21  
+
+---
+
+### 1. Daily Planning (Top-3 MIT)
+
+Bugun bajarilishi kerak bo'lgan 3 ta asosiy vazifa va ularning ustuvorligi:
+
+1. **GitHub yuklash (Soha: Kod)** — *ENG MUHIM (MIT 1)*
+   * **Sabab:** "AI Agent" maqsadiga erishish uchun eng birinchi navbatdagi texnik vazifa. Kodni GitHub’ga yuklash proyekt progressini ilgari suradi.
+2. **Semichka olish (Soha: Universitet)** — *MIT 2*
+   * **Sabab:** Universitet muhitida do'stlar/kursdoshlar bilan muloqot va qisqa tanaffus uchun.
+3. **Sigaret olish (Soha: Trading/Intizom)** — *MIT 3*
+   * **Sabab:** Kunlik rutindagi qisqa tanaffus va shaxsiy vaqt intizomini saqlash uchun. *(Eslatma: Trading bo'yicha hech qanday moliyaviy tavsiya berilmaydi, faqat kunlik rutindagi tartib saqlanadi).*
+
+---
+
+### 2. Time Blocking (Kunlik Jadval)
+
+* **09:00 – 11:30** | 💻 **GitHub yuklash** *(Fokus rejimi: AI Agent kodlarini tartiblash, commit va GitHub'ga push qilish)*
+* **14:00 – 15:00** | 🎓 **Semichka olish** *(Universitet hududida tanaffus va muloqot vaqti)*
+* **17:00 – 17:30** | 📈 **Sigaret olish & Intizomiy tanaffus** *(Rutindagi qisqa tanaffus va kunlik intizomni ko'zdan kechirish)*
+
+---
+
+**LifeOS Agent tavsiyasi:** Diqqatni birinchi navbatda **GitHub yuklash** vazifasiga qarat! Bu sening 12/21 progressingni oshirishdagi asosiy qadamdir. Faoliyatni boshladik!
