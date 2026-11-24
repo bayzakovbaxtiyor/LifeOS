@@ -1,7 +1,8 @@
 import json
 import os
 
-FAYL_NOMI = "tasks.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FAYL_NOMI = os.path.join(BASE_DIR, "data", "tasks.json")
 
 
 def vazifalarni_yuklash():
@@ -72,5 +73,5 @@ def main():
         else:
             print("Noto'g'ri tanlov!")
 
-
-main()
+if __name__ == "__main__":
+    main()
