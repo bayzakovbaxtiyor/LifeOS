@@ -1,17 +1,27 @@
 [
   {
-    "nom": "sigaret olish",
+    "nom": "volume profileni o'rganish",
     "soha": "tarding",
     "bajarildi": false
   },
   {
-    "nom": "semichka olish",
+    "nom": "Kompyuter tarmoqlari fanidan mustaqil ish yuklash",
     "soha": "universitet",
     "bajarildi": false
   },
   {
     "nom": "github yuklash",
     "soha": "kod",
+    "bajarildi": false
+  },
+  {
+    "nom": "Telegram botni suniy intelektga ulash",
+    "soha": "Kod",
+    "bajarildi": false
+  },
+  {
+    "nom": "Diyordan 1 mln sum qarz so'rash",
+    "soha": "pul",
     "bajarildi": false
   }
 ]

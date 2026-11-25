@@ -1,77 +1,152 @@
 import json
 import os
+import threading
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FAYL_NOMI = os.path.join(BASE_DIR, "data", "tasks.json")
+FILE_LOCK = threading.Lock()
 
 
-def vazifalarni_yuklash():
+def _vazifalarni_yuklash_qulf_ichida():
     if not os.path.exists(FAYL_NOMI):
         return []
     with open(FAYL_NOMI, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def vazifalarni_saqlash(vazifalar):
-    with open(FAYL_NOMI, "w", encoding="utf-8") as f:
-        json.dump(vazifalar, f, ensure_ascii=False, indent=2)
-
-
-def vazifa_qoshish(vazifalar):
-    nom = input("Vazifa nomi: ").strip()
-    soha = input("Soha (Universitet / IELTS / Trading / Kod): ").strip()
-    vazifalar.append({"nom": nom, "soha": soha, "bajarildi": False})
-    vazifalarni_saqlash(vazifalar)
-    print("Vazifa faylga saqlandi!")
-
-
-def vazifalarni_korish(vazifalar):
-    if not vazifalar:
-        print("Hozircha vazifalar yo'q.")
-        return
-    print("\n--- SAQLANGAN VAZIFALAR ---")
-    for i, v in enumerate(vazifalar, start=1):
-        holat = "[+]" if v["bajarildi"] else "[ ]"
-        print(f"{i}. {holat} {v['nom']} ({v['soha']})")
-
-
-def vazifani_bajarish(vazifalar):
-    vazifalarni_korish(vazifalar)
-    if not vazifalar:
-        return
+def _vazifalarni_saqlash_qulf_ichida(vazifalar):
+    os.makedirs(os.path.dirname(FAYL_NOMI), exist_ok=True)
+    vaqtinchalik = FAYL_NOMI + ".tmp"
     try:
-        raqam = int(input("Bajarilgan vazifa raqami: "))
-        if 1 <= raqam <= len(vazifalar):
-            vazifalar[raqam - 1]["bajarildi"] = True
-            vazifalarni_saqlash(vazifalar)
-            print("Holat yangilandi va saqlandi!")
-        else:
-            print("Noto'g'ri raqam!")
-    except ValueError:
-        print("Faqat raqam kiriting!")
+        with open(vaqtinchalik, "w", encoding="utf-8") as f:
+            json.dump(vazifalar, f, ensure_ascii=False, indent=2)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(vaqtinchalik, FAYL_NOMI)
+    finally:
+        if os.path.exists(vaqtinchalik):
+            os.remove(vaqtinchalik)
+
+
+def vazifalarni_yuklash():
+    with FILE_LOCK:
+        return _vazifalarni_yuklash_qulf_ichida()
+
+
+def vazifalarni_saqlash(vazifalar):
+    with FILE_LOCK:
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+
+
+def vazifa_qoshish(nom, soha):
+    with FILE_LOCK:
+        vazifalar = _vazifalarni_yuklash_qulf_ichida()
+        yangi_vazifa = {"nom": nom, "soha": soha, "bajarildi": False}
+        vazifalar.append(yangi_vazifa)
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+        return yangi_vazifa
+
+
+def vazifani_bajarildi_deb_belgilash(indeks):
+    with FILE_LOCK:
+        vazifalar = _vazifalarni_yuklash_qulf_ichida()
+        if indeks < 0 or indeks >= len(vazifalar):
+            return None
+        vazifalar[indeks]["bajarildi"] = True
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+        return vazifalar[indeks]
+
+
+def vazifa_holatini_almashtirish(indeks):
+    with FILE_LOCK:
+        vazifalar = _vazifalarni_yuklash_qulf_ichida()
+        if indeks < 0 or indeks >= len(vazifalar):
+            return None
+        vazifalar[indeks]["bajarildi"] = not vazifalar[indeks].get("bajarildi", False)
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+        return vazifalar[indeks]
+
+
+def vazifani_tahrirlash(indeks, yangi_nom, yangi_soha=None):
+    with FILE_LOCK:
+        vazifalar = _vazifalarni_yuklash_qulf_ichida()
+        if indeks < 0 or indeks >= len(vazifalar):
+            return None
+        vazifalar[indeks]["nom"] = yangi_nom
+        if yangi_soha:
+            vazifalar[indeks]["soha"] = yangi_soha
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+        return vazifalar[indeks]
+
+
+def vazifani_ochirish(indeks):
+    with FILE_LOCK:
+        vazifalar = _vazifalarni_yuklash_qulf_ichida()
+        if indeks < 0 or indeks >= len(vazifalar):
+            return None
+        ochirilgan = vazifalar.pop(indeks)
+        _vazifalarni_saqlash_qulf_ichida(vazifalar)
+        return ochirilgan
 
 
 def main():
-    vazifalar = vazifalarni_yuklash()
     while True:
-        print("\n=== LIFEOS TASK MANAGER v1.0 ===")
+        print("\n=== LIFEOS VAZIFALAR BOSHQARUVI v1.1 ===")
         print("1. Vazifa qo'shish")
         print("2. Vazifalarni ko'rish")
         print("3. Vazifani bajarildi deb belgilash")
+        print("4. Vazifani tahrirlash")
+        print("5. Vazifani o'chirish")
         print("0. Chiqish")
+        tanlov = input("Tanlovingiz (0-5): ").strip()
 
-        tanlov = input("Tanlovingiz (0-3): ").strip()
         if tanlov == "1":
-            vazifa_qoshish(vazifalar)
+            soha = input("Soha (masalan, Kod, Universitet, Trading): ").strip() or "Umumiy"
+            nom = input("Vazifa nomi: ").strip()
+            if nom:
+                vazifa_qoshish(nom, soha)
+                print("Vazifa saqlandi!")
+            else:
+                print("Xato: vazifa nomi bo'sh bo'lmasligi kerak.")
         elif tanlov == "2":
-            vazifalarni_korish(vazifalar)
+            vazifalar = vazifalarni_yuklash()
+            if not vazifalar:
+                print("Vazifalar ro'yxati bo'sh.")
+            for i, v in enumerate(vazifalar, start=1):
+                holat = "[x]" if v.get("bajarildi") else "[ ]"
+                print(f"{i}. {holat} [{v.get('soha', 'Umumiy')}] {v.get('nom')}")
         elif tanlov == "3":
-            vazifani_bajarish(vazifalar)
+            vazifalar = vazifalarni_yuklash()
+            raqam = input("Bajarilgan vazifa raqami: ").strip()
+            if not raqam.isdigit() or not vazifani_bajarildi_deb_belgilash(int(raqam) - 1):
+                print("Xato: bunday raqamli vazifa topilmadi.")
+            else:
+                print("Vazifa bajarildi deb belgilandi!")
+        elif tanlov == "4":
+            raqam = input("Tahrirlanadigan vazifa raqami: ").strip()
+            if raqam.isdigit():
+                yangi_soha = input("Yangi soha (o'zgartirmaslik uchun Enter): ").strip()
+                yangi_nom = input("Yangi vazifa nomi: ").strip()
+                if yangi_nom and vazifani_tahrirlash(int(raqam) - 1, yangi_nom, yangi_soha or None):
+                    print("Vazifa tahrirlandi!")
+                else:
+                    print("Xato: vazifa nomi bo'sh yoki raqam noto'g'ri.")
+            else:
+                print("Xato: vazifa raqamini kiriting.")
+        elif tanlov == "5":
+            raqam = input("O'chiriladigan vazifa raqami: ").strip()
+            if raqam.isdigit():
+                ochirilgan = vazifani_ochirish(int(raqam) - 1)
+                if ochirilgan:
+                    print(f"O'chirildi: {ochirilgan['nom']}")
+                else:
+                    print("Xato: bunday raqamli vazifa topilmadi.")
+            else:
+                print("Xato: vazifa raqamini kiriting.")
         elif tanlov == "0":
-            print("Barcha ma'lumotlar tasks.json faylida saqlandi. Xayr!")
+            print("Barcha ma'lumotlar data/tasks.json faylida saqlandi. Xayr!")
             break
-        else:
-            print("Noto'g'ri tanlov!")
+
 
 if __name__ == "__main__":
     main()

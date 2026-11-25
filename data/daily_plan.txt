@@ -3,25 +3,27 @@
 
 ---
 
-### 1. Daily Planning (Top-3 MIT)
+### 1. Daily Planning: Top-3 MIT (Eng muhim vazifalar)
 
-Bugun bajarilishi kerak bo'lgan 3 ta asosiy vazifa va ularning ustuvorligi:
-
-1. **GitHub yuklash (Soha: Kod)** — *ENG MUHIM (MIT 1)*
-   * **Sabab:** "AI Agent" maqsadiga erishish uchun eng birinchi navbatdagi texnik vazifa. Kodni GitHub’ga yuklash proyekt progressini ilgari suradi.
-2. **Semichka olish (Soha: Universitet)** — *MIT 2*
-   * **Sabab:** Universitet muhitida do'stlar/kursdoshlar bilan muloqot va qisqa tanaffus uchun.
-3. **Sigaret olish (Soha: Trading/Intizom)** — *MIT 3*
-   * **Sabab:** Kunlik rutindagi qisqa tanaffus va shaxsiy vaqt intizomini saqlash uchun. *(Eslatma: Trading bo'yicha hech qanday moliyaviy tavsiya berilmaydi, faqat kunlik rutindagi tartib saqlanadi).*
+1. **Telegram botni sun'iy intellektga ulash** *(Soha: Kod)*
+   * **Sabab:** Bosh maqsadingiz ("AI Agent")ga to'g'ridan-to'g'ri xizmat qiladigan eng yuqori ustuvorlikdagi texnik vazifa.
+2. **Kompyuter tarmoqlari fanidan mustaqil ish yuklash** *(Soha: Universitet)*
+   * **Sabab:** Akademik majburiyat va deadline intizomi. Buni tezroq yopish fikringizni asosiy loyihaga qaratishga imkon beradi.
+3. **GitHub'ga yuklash** *(Soha: Kod)*
+   * **Sabab:** Yozilgan kodingizni xavfsiz saqlash, versiyalash va AI Agent loyihasi progressini saqlab qolish uchun zarur.
 
 ---
 
-### 2. Time Blocking (Kunlik Jadval)
+### 2. Time Blocking (Kunlik Reja)
 
-* **09:00 – 11:30** | 💻 **GitHub yuklash** *(Fokus rejimi: AI Agent kodlarini tartiblash, commit va GitHub'ga push qilish)*
-* **14:00 – 15:00** | 🎓 **Semichka olish** *(Universitet hududida tanaffus va muloqot vaqti)*
-* **17:00 – 17:30** | 📈 **Sigaret olish & Intizomiy tanaffus** *(Rutindagi qisqa tanaffus va kunlik intizomni ko'zdan kechirish)*
+* **09:00 – 11:30** | 🧠 **Deep Work:** Telegram botni sun'iy intellektga ulash *(AI loyihasi ustida diqqatni jamlab ishlash)*
+* **11:45 – 12:45** | 🎓 **Akademik:** Kompyuter tarmoqlari fanidan mustaqil ishni tekshirish va yuklash
+* **14:00 – 15:00** | 💻 **DevOps / Git:** Kodlarni GitHub platformasiga yuklash (Push/Commit)
 
 ---
 
-**LifeOS Agent tavsiyasi:** Diqqatni birinchi navbatda **GitHub yuklash** vazifasiga qarat! Bu sening 12/21 progressingni oshirishdagi asosiy qadamdir. Faoliyatni boshladik!
+> **Eslatma (LifeOS Intizomi):**  
+> * Ro'yxatdagi *"Volume profileni o me'yorida o'rganish"* vazifasi keyingi o'quv blokiga o'tkazildi (faqat tahliliy/nazariy o'rganish intizomi asosida).
+> * Moliyaviy masalalar ("Diyor bo'yicha") kunlik asosiy fokusdan tashqarida bajarilishi tavsiya etiladi.
+
+**Ishni boshlaymizmi, Baxtiyor?**
