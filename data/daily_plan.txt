@@ -1,31 +1,31 @@
-Salom, **Baxtiyor**! 👋
-**LifeOS** yordamchingiz xizmatingizda. 
-🎯 **Asosiy maqsad:** AI Agent | 📊 **Progress:** 12/21
+Salom, Baxtiyor! 👋 
+**LifeOS** yordamchingiz ishga tayyor.
+
+📊 **Kunlik progress:** 12/21 (Maqsad sari ajoyib ketyapsiz, bugun 13-qadamni bosamiz!)
+🎯 **Asosiy maqsad:** AI Agent
 
 ---
 
-### 🎯 Bugungi eng muhim 3 ta vazifa va ularning sababi:
+### 🎯 Bugun uchun eng muhim 3 ta vazifa:
 
-1. **Telegram botni sun'iy intellektga ulash** *(Soha: Kod)*
-   👉 **Sababi:** Bu sizning asosiy maqsadingiz (**AI Agent**)ga bevosita bog'liq bo'lgan eng yuqori ustuvorlikdagi amaliy vazifa.
-2. **Kompyuter tarmoqlari fanidan mustaqil ish yuklash** *(Soha: Universitet)*
-   👉 **Sababi:** Akademik qarzdorlik va ortiqcha stressning oldini olish uchun belgilangan muddatda yuklash muhim.
-3. **GitHub'ga yuklash** *(Soha: Kod)*
-   👉 **Sababi:** Yozilgan kodlarni saqlash, tartibga keltirish va AI dastrochi sifatida portfoliongizni shakllantirish uchun zarur.
+1. 🤖 **Telegram botni sun'iy intellektga ulash** (*Soha: Kod*)
+   — *Sabab:* Asosiy maqsadingiz "AI Agent" yaratish bo'lgani uchun bu vazifa eng yuqori ustuvorlikka ega va amaliy natija beradi.
+2. 🎓 **Kompyuter tarmoqlari fanidan mustaqil ish yuklash** (*Soha: Universitet*)
+   — *Sabab:* Akademik qarzdorlik va ortiqcha chalg'ishlarning oldini olish uchun topshiriqni o'z vaqtida yopish zarur.
+3. 🛠 **Bookmap'ni o'rganish uchun MAC manzil almashtirish** (*Soha: Trading*)
+   — *Sabab:* Tahlil vositasini sozlab olish keyingi o'rganish bosqichiga o'tish uchun zaruriy texnik qadamdir.
 
 ---
 
 ### 📅 Bugungi kunlik jadval:
 
-• **09:00 — 11:30** | 💻 **Kod:** Telegram botni sun'iy intellektga ulash *(Deep Work / Chuqur diqqat vaqti)*  
-• **14:00 — 15:30** | 🎓 **Universitet:** Kompyuter tarmoqlari fanidan mustaqil ishni tayyorlash va platformaga yuklash  
-• **16:00 — 17:00** | 🛠 **Kod:** Bajarilgan loyihalarni GitHub profilga yuklash va tartiblash  
+• **09:00 — 11:30** | 🤖 *Kod:* Telegram botni AI ga ulash va test qilish (diqqat eng yuqori bo'lgan vaqtda).
+• **14:00 — 15:30** | 🎓 *Universitet:* Kompyuter tarmoqlari bo'yicha mustaqil ishni tayyorlash va platformaga yuklash.
+• **16:00 — 17:00** | 🛠 *Trading:* MAC manzilni almashtirish va Bookmap dasturini sozlash.
 
 ---
 
-### 📈 Tahlil va intizom bo'yicha eslatma:
-*"Volume profile"* mavzusini o'rganishda real pul bilan savdo qilishga shoshilmang. Hozirgi bosqichda faqat nazariy bilimlarni egallash, grafiklar tahlili va demo-hisobdagi intizomli o'quv mashqlariga e'tibor qating. 
+### ⚠️ Trading va intizom bo'yicha eslatma:
+*Bookmap vositasidan faqat bozordagi liquidity va hajm tahlilini **o'rganish ile nazariy va vizual ko'nikmalarni oshirish** uchun foydalaning. Haqiqiy mablag'lar bilan savdo qilishga shoshilmang — hozirgi bosqichda faqat tahlil intizomi va simulyatsiya muhim.*
 
-*Qolgan maishiy vazifalarni (masalan, pul masalasini hal qilish) kunning ikkinchi yarmida, bo'sh vaqtingizda ko'rib chiqsangiz bo me'yoriy bo'ladi.*
-
-Bugungi kuningiz unumli va maqsadga boy o'tsin! 🚀
+Muvaffaqiyatli va unumdor kun tilayman! Harakatni boshladikmi? 🚀

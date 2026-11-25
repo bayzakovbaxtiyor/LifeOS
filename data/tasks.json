@@ -2,7 +2,7 @@
   {
     "nom": "volume profileni o'rganish",
     "soha": "tarding",
-    "bajarildi": false
+    "bajarildi": true
   },
   {
     "nom": "Kompyuter tarmoqlari fanidan mustaqil ish yuklash",
@@ -12,11 +12,16 @@
   {
     "nom": "github yuklash",
     "soha": "kod",
-    "bajarildi": false
+    "bajarildi": true
   },
   {
     "nom": "Telegram botni suniy intelektga ulash",
     "soha": "Kod",
+    "bajarildi": false
+  },
+  {
+    "nom": "bookmapni organish uchun mac manzil almashtirish",
+    "soha": "trading",
     "bajarildi": false
   }
 ]

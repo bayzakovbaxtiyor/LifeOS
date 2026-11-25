@@ -1,5 +1,5 @@
 @'
-# LifeOS — Shaxsiy AI Agent va Vazifalar Boshqaruvchisi (v1.0)
+# LifeOS — Shaxsiy AI Agent va Vazifalar Boshqaruvchisi (v1.1)
 
 LifeOS — kunlik vazifalarni boshqarish, Gemini AI orqali Top-3 muhim vazifa (MIT) hamda vaqt jadvali (Time Blocking) tuzish uchun mo'ljallangan shaxsiy Telegram bot va CLI tizimi.
 
