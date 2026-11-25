@@ -1,3 +1,4 @@
+import logging
 import os
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -25,6 +26,8 @@ if ALLOWED_USER_ID and not ALLOWED_USER_ID.isdigit():
     raise ValueError("Xato: .env faylidagi ALLOWED_USER_ID faqat raqamlardan iborat bo'lishi kerak!")
 
 bot = telebot.TeleBot(BOT_TOKEN)
+logger = logging.getLogger("lifeos.telegram_bot")
+TELEGRAM_XABAR_ENG_KATTA = 3800
 
 
 def ruxsat_bormi(user_id):
@@ -33,6 +36,86 @@ def ruxsat_bormi(user_id):
 
 def ruxsat_yoq(message):
     bot.reply_to(message, "Ruxsat yo'q")
+
+
+def telegram_matnni_bolaklash(matn, limit=TELEGRAM_XABAR_ENG_KATTA):
+    matn = (matn or "").strip()
+    if not matn:
+        return ["AI reja matni bo'sh qaytdi."]
+
+    bolaklar = []
+    boshlanish = 0
+    while boshlanish < len(matn):
+        oxiri = boshlanish
+        oxirgi_qulay_joy = None
+        birliklar = 0
+
+        while oxiri < len(matn):
+            belgi = matn[oxiri]
+            belgi_birligi = 2 if ord(belgi) > 0xFFFF else 1
+            if birliklar + belgi_birligi > limit:
+                break
+            birliklar += belgi_birligi
+            oxiri += 1
+            if belgi in ("\n", " ") and birliklar >= limit // 2:
+                oxirgi_qulay_joy = oxiri
+
+        if oxiri < len(matn) and oxirgi_qulay_joy:
+            oxiri = oxirgi_qulay_joy
+        if oxiri == boshlanish:
+            oxiri += 1
+
+        bolak = matn[boshlanish:oxiri]
+        if bolak:
+            bolaklar.append(bolak)
+        boshlanish = oxiri
+
+    return bolaklar
+
+
+def telegramdagi_reja_xatosini_qayd_et(xato, amal):
+    logger.warning(
+        "Telegramga reja yuborilmadi: amal=%s, kod=%s, xato_turi=%s",
+        amal,
+        getattr(xato, "error_code", "noma'lum"),
+        type(xato).__name__,
+    )
+
+
+def rejani_telegramga_chiqarish(message, kutish_xabari, reja):
+    bolaklar = telegram_matnni_bolaklash(reja)
+    try:
+        bot.edit_message_text(
+            chat_id=message.chat.id,
+            message_id=kutish_xabari.message_id,
+            text=bolaklar[0],
+        )
+    except ApiTelegramException as xato:
+        if "message is not modified" in str(xato).lower():
+            return
+        telegramdagi_reja_xatosini_qayd_et(xato, "kutish_xabarini_tahrirlash")
+        try:
+            bot.send_message(
+                message.chat.id,
+                "Rejani Telegramga yuborib bo'lmadi. Birozdan keyin /plan buyrug'ini qayta yuboring.",
+            )
+        except ApiTelegramException as yuborish_xatosi:
+            telegramdagi_reja_xatosini_qayd_et(yuborish_xatosi, "xato_xabarini_yuborish")
+        return
+
+    for bolak in bolaklar[1:]:
+        try:
+            bot.send_message(message.chat.id, bolak)
+        except ApiTelegramException as xato:
+            telegramdagi_reja_xatosini_qayd_et(xato, "reja_bolagini_yuborish")
+            try:
+                bot.send_message(
+                    message.chat.id,
+                    "Rejaning qolgan qismini yuborib bo'lmadi. Birozdan keyin /plan buyrug'ini qayta yuboring.",
+                )
+            except ApiTelegramException as yuborish_xatosi:
+                telegramdagi_reja_xatosini_qayd_et(yuborish_xatosi, "xato_xabarini_yuborish")
+            return
 
 
 @bot.message_handler(commands=["myid"])
@@ -81,7 +164,7 @@ def boshlash(message):
         ruxsat_yoq(message)
         return
     matn = (
-        f"Salom, {message.from_user.first_name}! LifeOS v1.1 AI Agent tayyor.\n"
+        f"Salom, {message.from_user.first_name}! LifeOS v1.1 shaxsiy yordamchisi tayyor.\n"
         f"Sizning Telegram ID: {message.from_user.id}\n\n"
         "Mavjud buyruqlar:\n"
         "/tasks — Vazifalar ro'yxati va boshqaruv tugmalari (✅ ✏️ 🗑)\n"
@@ -89,7 +172,7 @@ def boshlash(message):
         "/edit 1 Soha | Yangi nom — Vazifani tahrirlash (yoki /edit 1 Yangi nom)\n"
         "/del 1 — Vazifani o'chirish\n"
         "/done 1 — Vazifani bajarildi deb belgilash\n"
-        "/plan — Gemini AI orqali Top-3 MIT va kunlik jadval tuzish"
+        "/plan — sun'iy intellekt yordamida bugungi reja tuzish"
     )
     bot.reply_to(message, matn)
 
@@ -136,7 +219,7 @@ def vazifa_tahrirlash_tg(message):
         bot.reply_to(
             message,
             "Format xato. Quyidagicha yozing:\n"
-            "/edit 1 Trading | Volume Profile o'rganish\n"
+            "/edit 1 Savdo | Narx hajmi tahlilini o'rganish\n"
             "yoki sohani o'zgartirmasdan:\n"
             "/edit 1 Volume Profile o'rganish",
         )
@@ -265,7 +348,7 @@ def tugma_bosilganda(call):
             call.message.chat.id,
             f"✏️ #{indeks + 1} vazifani tahrirlash:\n"
             f"Hozirgi: [{joriy.get('soha', 'Umumiy')}] {joriy.get('nom')}\n\n"
-            "Yangi matnni yuboring (masalan: `Trading | Backtest qilish` yoki shunchaki `Backtest qilish`).\n"
+            "Yangi matnni yuboring (masalan: `Savdo | Tarixiy ma'lumotlarda sinash` yoki yangi nomning o'zi).\n"
             "Bekor qilish uchun /cancel yozing.",
             parse_mode="Markdown",
         )
@@ -313,15 +396,12 @@ def ai_reja_tg(message):
         ruxsat_yoq(message)
         return
     kutish_xabari = bot.reply_to(message, "⏳ LifeOS sun'iy intellekti vazifalarni tahlil qilmoqda...")
-    reja = kunlik_reja_tuzish()
     try:
-        bot.edit_message_text(
-            chat_id=message.chat.id,
-            message_id=kutish_xabari.message_id,
-            text=reja[:4000],
-        )
-    except ApiTelegramException:
-        pass
+        reja = kunlik_reja_tuzish()
+    except Exception as xato:
+        logger.warning("AI reja funksiyasi xato berdi: xato_turi=%s", type(xato).__name__)
+        reja = "AI rejasini hozir tuzib bo'lmadi. Birozdan keyin /plan buyrug'ini qayta yuboring."
+    rejani_telegramga_chiqarish(message, kutish_xabari, reja)
 
 
 if __name__ == "__main__":

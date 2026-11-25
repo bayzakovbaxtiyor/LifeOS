@@ -1,29 +1,29 @@
-**Tizim:** LifeOS (BAXZAKOV-OS-2026-2027)  
-**Foydalanuvchi:** Baxtiyor | **Bosh maqsad:** AI Agent | **Progress:** 12/21  
+Assalomu alaykum, Baxtiyor! 🚀  
+**LifeOS** yordamchingiz xizmatda.  
+🎯 **Asosiy maqsad:** AI Agent | **Progress:** 12/21
 
 ---
 
-### 1. Daily Planning: Top-3 MIT (Eng muhim vazifalar)
+### 📌 Bugun uchun eng muhim 3 ta vazifa:
 
-1. **Telegram botni sun'iy intellektga ulash** *(Soha: Kod)*
-   * **Sabab:** Bosh maqsadingiz ("AI Agent")ga to'g'ridan-to'g'ri xizmat qiladigan eng yuqori ustuvorlikdagi texnik vazifa.
-2. **Kompyuter tarmoqlari fanidan mustaqil ish yuklash** *(Soha: Universitet)*
-   * **Sabab:** Akademik majburiyat va deadline intizomi. Buni tezroq yopish fikringizni asosiy loyihaga qaratishga imkon beradi.
-3. **GitHub'ga yuklash** *(Soha: Kod)*
-   * **Sabab:** Yozilgan kodingizni xavfsiz saqlash, versiyalash va AI Agent loyihasi progressini saqlab qolish uchun zarur.
+1. 🤖 **Telegram botni sun'iy intellektga ulash** *(Soha: Kod)*  
+   *Sabab:* Asosiy maqsadingiz bo'lmish AI Agent loyihasini amalga oshirishdagi eng muhim texnik bosqich.
 
----
+2. 🎓 **Kompyuter tarmoqlari fanidan mustaqil ish yuklash** *(Soha: Universitet)*  
+   *Sabab:* Akademik qarzdorlikning oldini olish va o'qishdagi intizomni saqlash uchun zarur.
 
-### 2. Time Blocking (Kunlik Reja)
-
-* **09:00 – 11:30** | 🧠 **Deep Work:** Telegram botni sun'iy intellektga ulash *(AI loyihasi ustida diqqatni jamlab ishlash)*
-* **11:45 – 12:45** | 🎓 **Akademik:** Kompyuter tarmoqlari fanidan mustaqil ishni tekshirish va yuklash
-* **14:00 – 15:00** | 💻 **DevOps / Git:** Kodlarni GitHub platformasiga yuklash (Push/Commit)
+3. 📊 **Volume profileni o'rganish** *(Soha: Trading)*  
+   *Sabab:* Bozorlarni tahlil qilish ko'nikmasini oshirish.  
+   *(⚠️ **Eslatma:** Bu faqat o'quv va tahlil intizomini rivojlantirish uchun. Real pul bilan savdo qilish bo mezonida moliyaviy tavsiyalar berilmaydi, faqat bilimlarni oshirishga fokus qiling).*
 
 ---
 
-> **Eslatma (LifeOS Intizomi):**  
-> * Ro'yxatdagi *"Volume profileni o me'yorida o'rganish"* vazifasi keyingi o'quv blokiga o'tkazildi (faqat tahliliy/nazariy o'rganish intizomi asosida).
-> * Moliyaviy masalalar ("Diyor bo'yicha") kunlik asosiy fokusdan tashqarida bajarilishi tavsiya etiladi.
+### 📅 Bugungi kunlik jadval:
 
-**Ishni boshlaymizmi, Baxtiyor?**
+• **09:00 — 10:30** | 🎓 *Kompyuter tarmoqlari fanidan mustaqil ishni yuklash*  
+• **11:00 — 13:00** | 🤖 *Telegram botni sun'iy intellektga ulash (Fokus rejim)*  
+• **15:00 — 16:30** | 📊 *Volume profileni o'rganish (O'quv va tahlil)*  
+
+---
+
+Kuningiz mahsuldor o'tsin! Bugungi 3 ta vazifani yakunlab, progressni **15/21** ga yetkazamiz! 💪✨
